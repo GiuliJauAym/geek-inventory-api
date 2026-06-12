@@ -1,0 +1,29 @@
+{
+  "name": "geek-inventory-api",
+  "version": "1.0.0",
+  "description": "API REST desarrollada con **Node.js + Express** que combina dos mundos: la gestión de inventario de un emprendimiento familiar y el backlog personal de videojuegos y prototipos de desarrollo.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GiuliJauAym/geek-inventory-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/GiuliJauAym/geek-inventory-api/issues"
+  },
+  "homepage": "https://github.com/GiuliJauAym/geek-inventory-api#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "sequelize": "^6.37.8",
+    "tedious": "^19.2.1"
+  }
+}
