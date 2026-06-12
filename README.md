@@ -22,6 +22,10 @@ Lista personal de videojuegos con seguimiento de estado (pendiente, jugando, com
 - SQL Server (SSMS)
 - Docker
 
+## 🗄️ Modelo de base de datos
+
+![Diagrama de tablas](docs/tablas.png)
+
 ## 🚧 Estado
 
 > Proyecto en desarrollo activo.
