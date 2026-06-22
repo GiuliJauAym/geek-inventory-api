@@ -11,7 +11,6 @@ const config = {
   },
   options: {
     database: 'GeekInventoryDB',
-    port: 1433,
     encrypt: false,
     trustServerCertificate: true,
     instanceName: 'SQLEXPRESS',
