@@ -11,7 +11,7 @@ const sequelize = new Sequelize({
   logging: process.env.NODE_ENV === 'development' ? console.log : false,
   define: {
     timestamps: true,
-    underscored: true,
+    underscored: false,
   },
   dialectOptions: {
     options: {
