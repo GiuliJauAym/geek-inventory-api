@@ -28,7 +28,7 @@ sequelize.authenticate()
   .catch(err => console.error('❌ Error de conexión:', err.message));
 
 // Sincroniza modelos
-sequelize.sync({ alter: true })
+sequelize.sync({ alter: process.env.NODE_ENV === 'development' })
   .then(() => console.log('✅ BD sincronizada'))
   .catch(err => console.error('❌ Error en sincronización:', err.message));
 
