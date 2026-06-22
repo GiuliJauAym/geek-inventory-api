@@ -1,10 +1,18 @@
-const { Producto } = require('../models/index');
+const { Producto, Categoria } = require('../models/index');
 
 class ProductoController {
   // Obtener todos los productos
   static async obtenerTodos(req, res) {
     try {
-      const productos = await Producto.findAll();
+      const productos = await Producto.findAll({
+        include: [
+          {
+            model: Categoria,
+            as: 'categoria',
+            attributes: ['id', 'nombre']
+          }
+        ]
+      });
       res.status(200).json({
         success: true,
         data: productos,
@@ -23,7 +31,15 @@ class ProductoController {
   static async obtenerPorId(req, res) {
     try {
       const { id } = req.params;
-      const producto = await Producto.findByPk(id);
+      const producto = await Producto.findByPk(id, {
+        include: [
+          {
+            model: Categoria,
+            as: 'categoria',
+            attributes: ['id', 'nombre']
+          }
+        ]
+      });
 
       if (!producto) {
         return res.status(404).json({
@@ -48,7 +64,7 @@ class ProductoController {
   // Crear un nuevo producto
   static async crear(req, res) {
     try {
-      const { nombre } = req.body;
+      const { nombre, descripcion, precioUnitario, cantidad, idCategoria } = req.body;
 
       if (!nombre) {
         return res.status(400).json({
@@ -57,7 +73,27 @@ class ProductoController {
         });
       }
 
-      const nuevoProducto = await Producto.create({ nombre });
+      if (precioUnitario === undefined || precioUnitario === null) {
+        return res.status(400).json({
+        success: false,
+        message: 'El precio unitario es requerido'
+        });
+      }
+
+      if (cantidad === undefined || cantidad === null) {
+        return res.status(400).json({
+        success: false,
+        message: 'La cantidad es requerida'
+        });
+      }
+
+      if (!idCategoria) {
+        return res.status(400).json({
+          success: false,
+          message: 'La categoría es requerida'
+        });
+      }
+      const nuevoProducto = await Producto.create({ nombre, descripcion, precioUnitario, cantidad, idCategoria });
 
       res.status(201).json({
         success: true,
@@ -77,7 +113,7 @@ class ProductoController {
   static async actualizar(req, res) {
     try {
       const { id } = req.params;
-      const { nombre } = req.body;
+      const { nombre, descripcion, precioUnitario, cantidad, idCategoria } = req.body;
 
       const producto = await Producto.findByPk(id);
 
@@ -88,7 +124,7 @@ class ProductoController {
         });
       }
 
-      await producto.update({ nombre });
+      await producto.update(req.body);
 
       res.status(200).json({
         success: true,

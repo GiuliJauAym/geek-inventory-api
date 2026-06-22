@@ -1,10 +1,18 @@
-const { Prototipo } = require('../models/index');
+const { Prototipo, VideoJuego } = require('../models/index');
 
 class PrototipoController {
   // Obtener todos los prototipos
   static async obtenerTodos(req, res) {
     try {
-      const prototipos = await Prototipo.findAll();
+      const prototipos = await Prototipo.findAll({
+        include: [
+          {
+            model: VideoJuego,
+            as: 'videojuego',
+            attributes: ['id', 'titulo']
+          }
+        ]
+      });
       res.status(200).json({
         success: true,
         data: prototipos,
@@ -23,7 +31,15 @@ class PrototipoController {
   static async obtenerPorId(req, res) {
     try {
       const { id } = req.params;
-      const prototipo = await Prototipo.findByPk(id);
+      const prototipo = await Prototipo.findByPk(id, {
+        include: [
+          {
+            model: VideoJuego,
+            as: 'videojuego',
+            attributes: ['id', 'titulo']
+          }
+        ]
+      });
 
       if (!prototipo) {
         return res.status(404).json({
@@ -48,16 +64,23 @@ class PrototipoController {
   // Crear un nuevo prototipo
   static async crear(req, res) {
     try {
-      const { nombre } = req.body;
+      const { titulo, descripcion, estado, idVideojuego, motor, inspiracion } = req.body;
 
-      if (!nombre) {
+      if (!titulo) {
         return res.status(400).json({
           success: false,
           message: 'El titulo es requerido'
         });
       }
 
-      const nuevoPrototipo = await Prototipo.create({ nombre });
+       if (!estado) {
+        return res.status(400).json({
+          success: false,
+          message: 'El estado es requerido'
+        });
+      }
+
+      const nuevoPrototipo = await Prototipo.create({ titulo, descripcion, estado, idVideojuego, motor, inspiracion });
 
       res.status(201).json({
         success: true,
@@ -77,7 +100,7 @@ class PrototipoController {
   static async actualizar(req, res) {
     try {
       const { id } = req.params;
-      const { nombre } = req.body;
+      const { titulo, descripcion, estado, idVideojuego, motor, inspiracion } = req.body;
 
       const prototipo = await Prototipo.findByPk(id);
 
@@ -88,7 +111,7 @@ class PrototipoController {
         });
       }
 
-      await prototipo.update({ nombre });
+      await prototipo.update(req.body);
 
       res.status(200).json({
         success: true,

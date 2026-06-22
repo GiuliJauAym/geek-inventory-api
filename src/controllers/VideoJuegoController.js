@@ -48,16 +48,23 @@ class VideoJuegoController {
   // Crear un nuevo videojuego
   static async crear(req, res) {
     try {
-      const { nombre } = req.body;
+      const { titulo, descripcion, genero, estado } = req.body;
 
-      if (!nombre) {
+      if (!titulo) {
         return res.status(400).json({
           success: false,
           message: 'El titulo es requerido'
         });
       }
 
-      const nuevoVideoJuego = await VideoJuego.create({ nombre });
+       if (!estado) {
+        return res.status(400).json({
+          success: false,
+          message: 'El estado es requerido'
+        });
+      }
+
+      const nuevoVideoJuego = await VideoJuego.create({ titulo, descripcion, genero, estado });
 
       res.status(201).json({
         success: true,
@@ -77,7 +84,7 @@ class VideoJuegoController {
   static async actualizar(req, res) {
     try {
       const { id } = req.params;
-      const { nombre } = req.body;
+      const { titulo, descripcion, genero, estado } = req.body;
 
       const videojuego = await VideoJuego.findByPk(id);
 
@@ -88,7 +95,7 @@ class VideoJuegoController {
         });
       }
 
-      await videojuego.update({ nombre });
+      await videojuego.update(req.body);
 
       res.status(200).json({
         success: true,
