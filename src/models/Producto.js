@@ -19,6 +19,19 @@ const Producto = sequelize.define('Producto', {
   precioUnitario: {
     type: DataTypes.DECIMAL(10, 2),
     allowNull: false,
+    validate: {
+      isDecimal: true,
+      min: 0
+    }
+  },
+  cantidad: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    defaultValue: 0,
+    validate: {
+      isInt: true,
+      min: 0
+    }
   },
   idCategoria: {
     type: DataTypes.INTEGER,
