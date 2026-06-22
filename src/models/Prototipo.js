@@ -12,12 +12,16 @@ const Prototipo = sequelize.define('Prototipo', {
         allowNull: false,
         validate: { notEmpty: true }
     },
+    descripcion: {
+        type: DataTypes.STRING(500),
+        allowNull: true,
+    },
     estado: {
         type: DataTypes.ENUM('idea', 'desarrollo', 'pausa', 'completado'),
         allowNull: false,
         defaultValue: 'idea',
     },
-    Id_videojuego: {
+    idVideojuego: {
         type: DataTypes.INTEGER,
         allowNull: true,
         references: {
@@ -26,9 +30,9 @@ const Prototipo = sequelize.define('Prototipo', {
         }
     },
     fechaCreacion: {
-    type: DataTypes.DATEONLY,
-    allowNull: true,
-    defaultValue: DataTypes.NOW,
+        type: DataTypes.DATEONLY,
+        allowNull: true,
+        defaultValue: DataTypes.NOW,
     },
     motor: {
         type: DataTypes.STRING(50),
