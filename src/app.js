@@ -1,5 +1,6 @@
 const express = require('express');
 const sequelize = require('./config/database');
+const { Categoria, Producto, VideoJuego, Prototipo } = require('./models/index');
 
 const app = express();
 app.use(express.json());
