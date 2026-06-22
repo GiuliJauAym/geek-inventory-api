@@ -5,7 +5,7 @@ const sequelize = new Sequelize({
   database: process.env.DB_NAME,
   username: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  host: process.env.DB_HOST, // Que en tu .env sea '127.0.0.1' o 'localhost'
+  host: process.env.DB_HOST,
   port: 1433,
   dialect: 'mssql',
   logging: process.env.NODE_ENV === 'development' ? console.log : false,
