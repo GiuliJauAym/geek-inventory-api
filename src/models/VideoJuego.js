@@ -20,11 +20,11 @@ const VideoJuego = sequelize.define('VideoJuego', {
     type: DataTypes.STRING(50),
     allowNull: true,
   },
-estado: {
-        type: DataTypes.ENUM('idea', 'desarrollo', 'pausa', 'completado'),
-        allowNull: false,
-        defaultValue: 'idea',
-    },
+  estado: {
+    type: DataTypes.ENUM('pendiente', 'jugando', 'completado'),
+    allowNull: false,
+    defaultValue: 'pendiente',
+  },
 }, {
   tableName: 'videojuegos'
 });
