@@ -5,23 +5,18 @@ const sequelize = new Sequelize({
   database: process.env.DB_NAME,
   username: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
+  host: process.env.DB_HOST, // Que en tu .env sea '127.0.0.1' o 'localhost'
+  port: 1433,
   dialect: 'mssql',
   logging: process.env.NODE_ENV === 'development' ? console.log : false,
   define: {
     timestamps: true,
     underscored: true,
   },
-  pool: {
-    max: 5,
-    min: 0,
-    acquire: 30000,
-    idle: 10000,
-  },
   dialectOptions: {
     options: {
-      encrypt: false,
+      encrypt: false, 
       trustServerCertificate: true,
-      instanceName: 'SQLEXPRESS',
       connectTimeout: 30000,
     },
   },
