@@ -9,7 +9,8 @@ class PrototipoController {
           {
             model: VideoJuego,
             as: 'videojuego',
-            attributes: ['id', 'titulo']
+            attributes: ['id', 'titulo'],
+            required: false
           }
         ]
       });
@@ -36,7 +37,8 @@ class PrototipoController {
           {
             model: VideoJuego,
             as: 'videojuego',
-            attributes: ['id', 'titulo']
+            attributes: ['id', 'titulo'],
+            required: false
           }
         ]
       });
@@ -70,13 +72,6 @@ class PrototipoController {
         return res.status(400).json({
           success: false,
           message: 'El titulo es requerido'
-        });
-      }
-
-       if (!estado) {
-        return res.status(400).json({
-          success: false,
-          message: 'El estado es requerido'
         });
       }
 

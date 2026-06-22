@@ -57,13 +57,6 @@ class VideoJuegoController {
         });
       }
 
-       if (!estado) {
-        return res.status(400).json({
-          success: false,
-          message: 'El estado es requerido'
-        });
-      }
-
       const nuevoVideoJuego = await VideoJuego.create({ titulo, descripcion, genero, estado });
 
       res.status(201).json({
