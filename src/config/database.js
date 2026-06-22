@@ -26,11 +26,11 @@ const sequelize = new Sequelize(
 // Prueba conexión
 sequelize.authenticate()
   .then(() => console.log('✅ Conexión a BD exitosa'))
-  .catch(err => console.error('❌ Error de conexión:', err));
+  .catch(err => console.error('❌ Error de conexión:', err.message));
 
 // Sincroniza modelos
 sequelize.sync({ alter: true })
   .then(() => console.log('✅ BD sincronizada'))
-  .catch(err => console.error('❌ Error en sincronización:', err));
+  .catch(err => console.error('❌ Error en sincronización:', err.message));
 
 module.exports = sequelize;
