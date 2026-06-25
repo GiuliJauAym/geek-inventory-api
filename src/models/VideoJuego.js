@@ -5,7 +5,7 @@ const VideoJuego = sequelize.define('VideoJuego', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
-    autoIncrement: false,
+    autoIncrement: true,
   },
   titulo: {
     type: DataTypes.STRING(100),
