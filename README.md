@@ -1,20 +1,20 @@
-# 🎮 Geek Inventory API
+# Geek Inventory API
 
 API REST desarrollada con **Node.js + Express** que combina dos mundos: la gestión de inventario de un emprendimiento familiar y el backlog personal de videojuegos y prototipos de desarrollo.
 
-## 📦 Módulos
+## Módulos
 
-### 🗂️ Inventario
+### Inventario
 Gestión de productos y categorías para un emprendimiento. Permite organizar el stock por categoría, registrar precios y controlar cantidades.
 
 **Entidades:** `Categoria` → `Producto`
 
-### 🎮 Backlog
+### Backlog
 Lista personal de videojuegos con seguimiento de estado (pendiente, jugando, completado) y registro de prototipos de juegos propios con su inspiración.
 
 **Entidades:** `Videojuego` → `Prototipo`
 
-## 🛠️ Tecnologías
+## Tecnologías
 
 - Node.js
 - Express
@@ -22,11 +22,11 @@ Lista personal de videojuegos con seguimiento de estado (pendiente, jugando, com
 - SQL Server (SSMS)
 - Docker
 
-## 🗄️ Modelo de base de datos
+## Modelo de base de datos
 
 ![Diagrama de tablas](docs/tablas.png)
 
-## 🚧 Estado
+## Estado
 
 > Proyecto en desarrollo activo.
 
