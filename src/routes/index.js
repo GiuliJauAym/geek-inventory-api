@@ -1,15 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-const categoriaRoutes = require('./categoriaRoutes');
-const productoRoutes = require('./productoRoutes');
-const videojuegoRoutes = require('./videojuegoRoutes');
-const prototipoRoutes = require('./prototipoRoutes');
+const CategoriaRoutes = require('./CategoriaRoutes');
+const ProductoRoutes = require('./ProductoRoutes');
+const VideojuegoRoutes = require('./VideojuegoRoutes');
+const PrototipoRoutes = require('./PrototipoRoutes');
 
-// Vincular las rutas a sus endpoints base
-router.use('/categorias', categoriaRoutes);
-router.use('/productos', productoRoutes);
-router.use('/videojuegos', videojuegoRoutes);
-router.use('/prototipos', prototipoRoutes);
+router.use('/Categorias', CategoriaRoutes);
+router.use('/Productos', ProductoRoutes);
+router.use('/Videojuegos', VideojuegoRoutes);
+router.use('/Prototipos', PrototipoRoutes);
 
 module.exports = router;
