@@ -6,9 +6,9 @@ const ProductoRoutes = require('./ProductoRoutes');
 const VideojuegoRoutes = require('./VideojuegoRoutes');
 const PrototipoRoutes = require('./PrototipoRoutes');
 
-router.use('/Categorias', CategoriaRoutes);
-router.use('/Productos', ProductoRoutes);
-router.use('/Videojuegos', VideojuegoRoutes);
-router.use('/Prototipos', PrototipoRoutes);
+router.use('/categorias', CategoriaRoutes);
+router.use('/productos', ProductoRoutes);
+router.use('/videojuegos', VideojuegoRoutes);
+router.use('/prototipos', PrototipoRoutes);
 
 module.exports = router;
